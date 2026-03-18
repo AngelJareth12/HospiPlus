@@ -1,0 +1,283 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\hospiplus\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|solutionrelative:hospiplus\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\hospiplus\\assets\\general\\layout.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|solutionrelative:hospiplus\\assets\\general\\layout.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|c:\\users\\alexa\\desktop\\hospi plus proyecto\\hospi plus\\hospi plus\\hospi plus\\hospi plus\\hospiplus\\hospiplus\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|solutionrelative:hospiplus\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\hospiplus\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|solutionrelative:hospiplus\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\hospiplus\\content\\confirmarcitastyle.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|solutionrelative:hospiplus\\content\\confirmarcitastyle.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\hospiplus\\views\\home\\citas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|solutionrelative:hospiplus\\views\\home\\citas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\hospiplus\\viewmodel\\confirmacioncita.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|solutionrelative:hospiplus\\viewmodel\\confirmacioncita.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\hospiplus\\views\\home\\confirmarcita.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|solutionrelative:hospiplus\\views\\home\\confirmarcita.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\hospiplus\\models\\helpers\\citas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|solutionrelative:hospiplus\\models\\helpers\\citas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\hospiplus\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|solutionrelative:hospiplus\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\hospiplus\\assets\\citas\\citas.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|solutionrelative:hospiplus\\assets\\citas\\citas.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\hospiplus\\assets\\general\\medicoslist.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|solutionrelative:hospiplus\\assets\\general\\medicoslist.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\hospiplus\\assets\\citas\\citas.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|solutionrelative:hospiplus\\assets\\citas\\citas.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\hospiplus\\models\\helpers\\geminiapihelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04471E37-E9C8-498B-AD24-A5BF83239AB6}|HospiPlus\\HospiPlus.csproj|solutionrelative:hospiplus\\models\\helpers\\geminiapihelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{25f7e850-ffa1-11d0-b63f-00a0c922e851}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a83394e3-39c2-4678-a3c8-364b69d78fd3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "citas.css",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\assets\\Citas\\citas.css",
+              "RelativeDocumentMoniker": "HospiPlus\\assets\\Citas\\citas.css",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\assets\\Citas\\citas.css",
+              "RelativeToolTip": "HospiPlus\\assets\\Citas\\citas.css",
+              "ViewState": "AgIAAGcDAAAAAAAAAAAkwIADAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-06-05T06:02:45.382Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "HospiPlus\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "HospiPlus\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-09T22:25:40.775Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Views\\Home\\Login.cshtml",
+              "RelativeDocumentMoniker": "HospiPlus\\Views\\Home\\Login.cshtml",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Views\\Home\\Login.cshtml",
+              "RelativeToolTip": "HospiPlus\\Views\\Home\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-09T23:15:38.204Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ConfirmarCitaStyle.css",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Content\\ConfirmarCitaStyle.css",
+              "RelativeDocumentMoniker": "HospiPlus\\Content\\ConfirmarCitaStyle.css",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Content\\ConfirmarCitaStyle.css",
+              "RelativeToolTip": "HospiPlus\\Content\\ConfirmarCitaStyle.css",
+              "ViewState": "AgIAAGIBAAAAAAAAAAAAwG4BAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-06-09T23:11:14.286Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ConfirmarCita.cshtml",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Views\\Home\\ConfirmarCita.cshtml",
+              "RelativeDocumentMoniker": "HospiPlus\\Views\\Home\\ConfirmarCita.cshtml",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Views\\Home\\ConfirmarCita.cshtml",
+              "RelativeToolTip": "HospiPlus\\Views\\Home\\ConfirmarCita.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-09T23:09:09.167Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "confirmacionCita.cs",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\ViewModel\\confirmacionCita.cs",
+              "RelativeDocumentMoniker": "HospiPlus\\ViewModel\\confirmacionCita.cs",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\ViewModel\\confirmacionCita.cs",
+              "RelativeToolTip": "HospiPlus\\ViewModel\\confirmacionCita.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAGoAAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T23:07:04.764Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Citas.cshtml",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Views\\Home\\Citas.cshtml",
+              "RelativeDocumentMoniker": "HospiPlus\\Views\\Home\\Citas.cshtml",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Views\\Home\\Citas.cshtml",
+              "RelativeToolTip": "HospiPlus\\Views\\Home\\Citas.cshtml",
+              "ViewState": "AgIAACIBAAAAAAAAAAAAADwBAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-31T21:25:47.801Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Citas.cs",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Models\\Helpers\\Citas.cs",
+              "RelativeDocumentMoniker": "HospiPlus\\Models\\Helpers\\Citas.cs",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Models\\Helpers\\Citas.cs",
+              "RelativeToolTip": "HospiPlus\\Models\\Helpers\\Citas.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBUAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T19:55:40.654Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "HospiPlus\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "HospiPlus\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAEABAAAAAAAAAAAAAAgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T21:52:32.597Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "GeminiApiHelper.cs",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Models\\Helpers\\GeminiApiHelper.cs",
+              "RelativeDocumentMoniker": "HospiPlus\\Models\\Helpers\\GeminiApiHelper.cs",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Models\\Helpers\\GeminiApiHelper.cs",
+              "RelativeToolTip": "HospiPlus\\Models\\Helpers\\GeminiApiHelper.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAQwC4AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T20:37:05.061Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "citas.js",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\assets\\Citas\\citas.js",
+              "RelativeDocumentMoniker": "HospiPlus\\assets\\Citas\\citas.js",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\assets\\Citas\\citas.js",
+              "RelativeToolTip": "HospiPlus\\assets\\Citas\\citas.js",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-05-31T21:26:57.629Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "HospiPlus\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "HospiPlus\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-29T03:59:19.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MedicosList.css",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\assets\\General\\MedicosList.css",
+              "RelativeDocumentMoniker": "HospiPlus\\assets\\General\\MedicosList.css",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\assets\\General\\MedicosList.css",
+              "RelativeToolTip": "HospiPlus\\assets\\General\\MedicosList.css",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAAAJoAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-06-09T22:33:01.001Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Layout.css",
+              "DocumentMoniker": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\assets\\General\\Layout.css",
+              "RelativeDocumentMoniker": "HospiPlus\\assets\\General\\Layout.css",
+              "ToolTip": "C:\\Users\\alexa\\Desktop\\Hospi Plus Proyecto\\Hospi Plus\\Hospi Plus\\Hospi Plus\\Hospi Plus\\HospiPlus\\HospiPlus\\assets\\General\\Layout.css",
+              "RelativeToolTip": "HospiPlus\\assets\\General\\Layout.css",
+              "ViewState": "AgIAANMFAAAAAAAAAAAAAOUFAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-05-29T04:46:59.799Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 425,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cab27b98-a314-48d2-9746-efe8ba39ccb0}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

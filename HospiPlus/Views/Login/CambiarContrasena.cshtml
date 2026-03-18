@@ -1,0 +1,346 @@
+﻿@model HospiPlus.ViewModels.CambiarContrasenaViewModel
+
+@{
+    ViewBag.Title = "Cambiar Contraseña";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<style>
+    :root {
+        --bgColor: #fff;
+        --inputColor: #000;
+        --outlineColor: #1e90ff;
+        --activeColor: #ff0;
+        --spacer: 1rem;
+        --formBg: #fff;
+        --buttonSpacing: 0.75rem;
+    }
+
+    body.show-password {
+        background: #121212 !important;
+        --bgColor: #121212;
+        --inputColor: #fff;
+        --outlineColor: var(--activeColor);
+        --formBg: #121212;
+    }
+
+    .change-password-page {
+        background: var(--bgColor);
+        transition: all 0.3s ease;
+        padding: 2rem 0;
+    }
+
+    .password-card {
+        padding: var(--spacer);
+        width: 100%;
+        max-width: 400px;
+        background: var(--formBg);
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        border: none;
+        margin: 0 auto;
+    }
+
+    .password-title {
+        text-align: center;
+        color: var(--inputColor);
+        margin-bottom: var(--spacer);
+        font-size: 1.5rem;
+        font-family: monospace;
+        font-weight: 700;
+        padding-top: 0.5rem;
+    }
+
+    .form-item {
+        position: relative;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        color: var(--inputColor);
+        font-family: monospace;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 2px solid transparent;
+        background: var(--formBg);
+        font-size: 1rem;
+        color: var(--inputColor);
+        box-shadow: inset 0 0 0 2px #000;
+        transition: all 0.3s ease;
+        font-family: monospace;
+        height: auto;
+    }
+
+        .form-control:focus {
+            outline: 3px solid var(--outlineColor);
+            outline-offset: 2px;
+            box-shadow: none;
+        }
+
+    input[type="password"] {
+        letter-spacing: 0.1em;
+    }
+
+    .eye-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 0.5rem;
+    }
+
+    #toggle-password {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--inputColor);
+        font-size: 0.9rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        font-family: monospace;
+    }
+
+        #toggle-password:hover {
+            background: rgba(0,0,0,0.05);
+        }
+
+    .eye {
+        width: 1.25rem;
+        height: 1.25rem;
+        border: 2px solid var(--inputColor);
+        border-radius: 50% 50% 0 50%;
+        transform: rotate(45deg);
+        position: relative;
+    }
+
+        .eye::before {
+            content: '';
+            position: absolute;
+            width: 35%;
+            height: 35%;
+            background: var(--inputColor);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    body.show-password .eye {
+        border-color: var(--activeColor);
+    }
+
+        body.show-password .eye::before {
+            background: var(--activeColor);
+        }
+
+    .button-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--buttonSpacing);
+        margin-top: 1.5rem;
+    }
+
+    .btn-submit {
+        width: 100%;
+        padding: 0.75rem;
+        background: var(--inputColor);
+        color: var(--bgColor);
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 4px 4px 0 rgba(30,144,255,0.2);
+        font-family: monospace;
+    }
+
+        .btn-submit:active {
+            transform: translateY(1px);
+        }
+
+    .btn-back {
+        width: 100%;
+        padding: 0.75rem;
+        background: transparent;
+        color: var(--inputColor);
+        border: 2px solid var(--inputColor);
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-family: monospace;
+        text-align: center;
+        text-decoration: none;
+    }
+
+        .btn-back:hover {
+            background: rgba(0,0,0,0.05);
+        }
+
+    .validation-summary-errors {
+        color: #dc3545;
+        margin-bottom: 1rem;
+        font-family: monospace;
+    }
+
+    .field-validation-error {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        display: block;
+        font-family: monospace;
+    }
+
+    @@media (max-width: 768px) {
+        :root {
+            --spacer: 0.75rem;
+            --buttonSpacing: 0.5rem;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .password-card {
+            max-width: 90%;
+            padding: 1rem;
+        }
+
+        .password-title {
+            font-size: 1.25rem;
+        }
+
+        .change-password-page {
+            padding: 1rem;
+        }
+    }
+</style>
+
+<div class="change-password-page d-flex justify-content-center align-items-center min-vh-100">
+    <div class="password-card shadow-lg">
+        <h1 class="password-title">
+            <i class="fas fa-key mr-2"></i> Cambiar Contraseña
+        </h1>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.Error
+            </div>
+        }
+
+        @if (TempData["Exito"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @TempData["Exito"]
+            </div>
+        }
+
+        @using (Html.BeginForm("CambiarContrasena", "Login", FormMethod.Post, new { id = "passwordForm" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "validation-summary-errors" })
+            @Html.HiddenFor(m => m.Email)
+
+            <div class="form-item">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.NuevaContrasena, "Nueva contraseña")
+                    @Html.PasswordFor(m => m.NuevaContrasena, new
+                    {
+                        @class = "form-control",
+                        id = "newPassword",
+                        autocomplete = "new-password",
+                        placeholder = "Nueva contraseña"
+                    })
+                    @Html.ValidationMessageFor(m => m.NuevaContrasena)
+                </div>
+            </div>
+
+            <div class="form-item">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmarContrasena, "Confirmar contraseña")
+                    @Html.PasswordFor(m => m.ConfirmarContrasena, new
+                    {
+                        @class = "form-control",
+                        id = "confirmPassword",
+                        autocomplete = "new-password",
+                        placeholder = "Confirmar contraseña"
+                    })
+                    @Html.ValidationMessageFor(m => m.ConfirmarContrasena)
+                </div>
+
+                <div class="eye-container">
+                    <button type="button" id="toggle-password">
+                        <span id="toggle-text">Mostrar contraseñas</span>
+                        <div class="eye"></div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-check-circle mr-2"></i> Actualizar Contraseña
+                </button>
+
+                <a href="@Url.Action("Login", "Home")" class="btn-back">
+                    <i class="fas fa-arrow-left mr-2"></i> Regresar al Login
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleBtn = document.getElementById('toggle-password');
+            const toggleText = document.getElementById('toggle-text');
+            const newPassInput = document.getElementById('newPassword');
+            const confirmPassInput = document.getElementById('confirmPassword');
+            const form = document.getElementById('passwordForm');
+            const body = document.body;
+            let passwordsVisible = false;
+
+            // Función para alternar visibilidad
+            function togglePasswordVisibility() {
+                passwordsVisible = !passwordsVisible;
+
+                // Cambiar tipo de inputs
+                newPassInput.type = passwordsVisible ? 'text' : 'password';
+                confirmPassInput.type = passwordsVisible ? 'text' : 'password';
+
+                // Cambiar clase del body
+                body.classList.toggle('show-password', passwordsVisible);
+
+                // Actualizar texto del botón
+                toggleText.textContent = passwordsVisible
+                    ? 'Ocultar contraseñas'
+                    : 'Mostrar contraseñas';
+            }
+
+            // Evento click para el botón
+            toggleBtn.addEventListener('click', togglePasswordVisibility);
+
+            // Validación de formulario
+            form.addEventListener('submit', function (e) {
+                if (newPassInput.value !== confirmPassInput.value) {
+                    e.preventDefault();
+                    alert('Las contraseñas no coinciden');
+                    return;
+                }
+
+                if (newPassInput.value.length < 8) {
+                    e.preventDefault();
+                    alert('La contraseña debe tener al menos 8 caracteres');
+                    return;
+                }
+            });
+        });
+    </script>
+}

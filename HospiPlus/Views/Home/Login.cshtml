@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    @model HospiPlus.Models.Usuario
+}
+<link href="~/assets/Login/Login.css" rel="stylesheet" />
+
+<div class="container" onclick="">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <div class="center">
+        <h2>Ingresa tu Información</h2>
+        @using (Html.BeginForm("Login", "home", FormMethod.Post))
+        {
+            @Html.TextBoxFor(m => m.Email, new Dictionary<string, object> { { "placeholder", "Usuarios" } })
+            @Html.PasswordFor(m => m.Contrasena, new Dictionary<string, object> { { "placeholder", "Contraseña" } })
+            <input type="submit" value="Enviar" class="btn btn-success mb-2" />
+
+        }
+    <center style="margin-top:20px;">
+        @Html.ActionLink("¿Olvidó la Contraseña?", "RecuperarContrasena", "Login", null, new { style = "text-decoration:none;color:black;cursor:pointer;" })
+    </center>      
+        @if (ViewBag.Error != null)
+        {
+            <script>
+        Swal.fire({
+            icon: 'error',
+            title: '¡Error!',
+            text: '@ViewBag.Error',
+            confirmButtonColor: '#d33'
+        });
+            </script>
+        }
+    </div>
+</div>

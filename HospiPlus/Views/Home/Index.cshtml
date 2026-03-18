@@ -1,0 +1,831 @@
+﻿
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var medicosJson = Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.Medicos);
+}
+<style>
+    .avatar-box img {
+        border-radius: 50%;
+        border: 4px solid #FDCA66;
+        width: 180px;
+        height: 180px;
+    }
+   
+    @@media screen and (max-width:1500px) {
+        #content {
+            position: absolute;
+            height: 40px;
+            width: 40px;
+            top: 20%;
+            right: 0%;
+            transform: translate(-50%, -50%);
+        }
+        .avatar-box img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+
+    @@media screen and (max-width:1000px) {
+        #content {
+            position: absolute;
+            height: 40px;
+            width: 40px;
+            top: 55%;
+            right: 10%;
+            transform: translate(-50%, -50%);
+        }
+
+        .avatar-box img {
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+@@media screen and (max-width:600px) {
+    #content{
+        position: absolute;
+        height: 40px;
+        width: 40px;
+        top: 35%;
+        right: 0%;
+        transform: translate(-50%, -50%);
+    }
+
+    .avatar-box img {
+        width: 80px;
+        height: 80px;    
+    }
+}
+</style>
+<main>
+    <aside class="sidebar " data-sidebar>
+        <div class="sidebar-info" style="border-radius:50%;">
+            <form id="formCambiarImagen" enctype="multipart/form-data" method="post" action="@Url.Action("ActualizarFotoPerfil", "Home")">
+                <!-- Input file oculto -->
+                <input type="file" name="imagen" id="imagenPerfilInput" style="display: none;" accept="image/*"
+                       onchange="document.getElementById('formCambiarImagen').submit();" />
+
+                <!-- Figura con imagen clickeable -->
+                <figure class="avatar-box" style="border-radius: 50%; cursor: pointer;" id="imagenClickable">
+                    <img src="@Url.Content(ViewBag.Usuario.ImagenPerfil ?? "~/Content/imagenes/default.jpg")" alt="avatar" style="border-radius: 50%; width: 150px; height: 150px;" />
+                </figure>
+            </form>
+
+
+            <div class="info-content">
+                <h1 class="name" title="Richard Hanrick">@ViewBag.Paciente.Nombre  @ViewBag.Paciente.Apellido</h1>
+                <p class="title">@ViewBag.Usuario.Rol</p>
+            </div>
+
+            <button class="info-more-btn" data-sidebar-btn>
+                <span>Show Contacts</span>
+                <ion-icon name="chevron-down"></ion-icon>
+            </button>
+        </div>
+
+        <div class="sidebar-info-more">
+            <div class="separator"></div>
+            <ul class="contacts-list">
+                <li class="contact-item">
+                    <div class="icon-box">
+                        <ion-icon name="mail-outline"></ion-icon>
+                    </div>
+                    <div class="contact-info">
+                        <p class="contact-title">Correo Electrónico</p>
+
+                        <a href="" class="contact-link">@ViewBag.Usuario.Email</a>
+                    </div>
+                </li>
+
+                <li class="contact-item">
+                    <div class="icon-box">
+                        <ion-icon name="call-outline"></ion-icon>
+                    </div>
+
+                    <div class="contact-info">
+                        <p class="contact-title">Teléfono</p>
+
+                        <a href="" class="contact-link">@ViewBag.Paciente.Telefono</a>
+                    </div>
+                </li>
+
+                <li class="contact-item">
+                    <div class="icon-box">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                    </div>
+
+                    <div class="contact-info">
+                        <p class="contact-title">Ultimo Ingreso</p>
+
+                        <time datetime="@ViewBag.fecha">@ViewBag.fecha</time>
+                    </div>
+                </li>
+
+                <li class="contact-item">
+                    <div class="icon-box">
+                        <ion-icon name="location-outline"></ion-icon>
+                    </div>
+
+                    <div class="contact-info">
+                        <p class="contact-title">Dirección</p>
+
+                        <a class="contact-link" id="saldoCliente">@ViewBag.Paciente.Direccion</a>
+                    </div>
+                </li>
+                <li class="contact-item">
+                    <div class="icon-box">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                    </div>
+
+                    <div class="contact-info">
+                        <p class="contact-title">Fecha Nacimiento</p>
+
+                        <a class="contact-link" id="THCliente">@ViewBag.FechaNacimientoFormateada</a>
+                    </div>
+                </li>
+
+                <li class="contact-item" onclick="logout()" style="cursor: pointer; border: 1px solid #FFC763; padding:3px; border-radius:8px;">
+                    <div class="icon-box">
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </div>
+
+                    <div class="contact-info">
+                        <p class="contact-title">Log Out</p>
+
+                        <a class="contact-link"></a>
+                    </div>
+                </li>
+            </ul>
+            <div class="separator"></div>
+            <ul class="social-list">
+                <li class="social-item"><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                <li class="social-item"><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                <li class="social-item"><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+            </ul>
+        </div>
+    </aside>
+    <div class="main-content">
+        <nav class="navbar">
+            <ul class="navbar-list">
+                <li class="navbar-item"><button class="navbar-link active" data-nav-link>Home</button></li>
+                <li class="navbar-item"><button class="navbar-link" data-nav-link>Asistente</button></li>
+                <li class="navbar-item"><button class="navbar-link" data-nav-link>Médicos</button></li>
+                <li class="navbar-item"><button class="navbar-link" data-nav-link>About Us</button></li>
+            </ul>
+        </nav>
+
+        <article class="about active" data-page="home">
+            <header>
+                <h2 class="h2 article-title">Home</h2>
+            </header>
+            <section class="about-text">
+                <p>Con calidez salvadoreña, La Banca les da una cordial bienvenida. Somos más que un banco, un aliado con principios firmes para su progreso. Nuestros servicios, diseñados con esmero, buscan su bienestar financiero con transparencia y respeto. En La Banca, construimos juntos su futuro, con una atención cálida y genuino compromiso. ¡Bienvenidos a la familia!</p>
+
+            </section>
+
+            <section class="service">
+                <div class="wrapper">
+                    <div class="items">
+                        <div class="item" tabindex="0" style="background-image: url(https://highflyer.sirv.com/cloud/15_voqq0c.png)"></div>
+                        <div class="item" tabindex="0" style="background-image: url(https://highflyer.sirv.com/cloud/21_wbsty7.png)"></div>
+                        <div class="item" tabindex="0" style="background-image: url(https://highflyer.sirv.com/cloud/1_zlqnwl.jpg)"></div>
+                        <div class="item" tabindex="0" style="background-image: url(https://highflyer.sirv.com/cloud/16_epnmqm.png)"></div>
+                        <div class="item" tabindex="0" style="background-image: url(https://highflyer.sirv.com/cloud/Screenshot_23_8_nbzwdm.png)"></div>
+                        <div class="item" tabindex="0" style="background-image: url(https://highflyer.sirv.com/cloud/29_jbd4di.jpg)"></div>
+                        <div class="item" tabindex="0" style="background-image: url(https://highflyer.sirv.com/cloud/14_zkwtff.png)"></div>
+                        <div class="item" tabindex="0" style="background-image: url(https://highflyer.sirv.com/cloud/8_ucihr5.png)"></div>
+                        <div class="item" tabindex="0" style="background-image: url(https://highflyer.sirv.com/cloud/18_bguamv.png)"></div>
+                        <div class="item" tabindex="0" style="background-image: url(https://highflyer.sirv.com/cloud/Screenshot_18_4_mscxmr.jpg)"></div>
+                        <div class="item" tabindex="0" style="background-image: url(https://highflyer.sirv.com/cloud/2_zja2bq.png)"></div>
+                        <div class="item" tabindex="0" style="background-image: url(https://highflyer.sirv.com/cloud/11_p1oi8m.png)"></div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="testimonials">
+                <h3 class="h3 testimonials-title">Opiniones de Usuarios</h3>
+
+                <ul class="testimonials-list has-scrollbar">
+                    <li class="testimonials-item">
+                        <div class="content-card" data-testimonials-item>
+                            <figure class="testimonials-avatar-box">
+                                <img src="https://i.postimg.cc/fRFWhX9F/avatar-3.png" alt="avatar" data-testimonials-avatar width="60">
+                            </figure>
+
+                            <h4 class="h4 testimonials-item-title" data-testimonials-title>Doña Carmen, paciente crónica</h4>
+
+                            <div class="testimonials-text" data-testimonials-text>
+                                <p>Desde que empecé a usar Hospi Plus en mi clínica de confianza, todo ha cambiado para mejor. Mis citas están organizadas, mis recetas disponibles y me siento segura sabiendo que mi historial médico está completo y accesible. El personal ya no pierde tiempo buscando papeles, y eso significa que me atienden con más dedicación. Hospi Plus no es solo un sistema, es una ayuda real para quienes dependemos de un buen seguimiento médico.</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="testimonials-item">
+                        <div class="content-card" data-testimonials-item>
+                            <figure class="testimonials-avatar-box">
+                                <img src="https://i.postimg.cc/zXv1Xv81/avatar-4.png" alt="avatar" data-testimonials-avatar width="60">
+                            </figure>
+
+                            <h4 class="h4 testimonials-item-title" data-testimonials-title>Carlos, médico residente</h4>
+
+                            <div class="testimonials-text" data-testimonials-text>
+                                <p>Trabajar con Hospi Plus ha mejorado muchísimo la forma en que llevo el control de mis consultas y recetas. Todo está integrado, puedo ver rápidamente el historial del paciente y dedicar más tiempo a lo importante: escucharlos y darles un buen diagnóstico. El sistema es intuitivo y confiable, y realmente hace que la atención sea más humana y menos burocrática. Es una herramienta que todo médico debería tener.</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <div class="modal-container " data-modal-container>
+                <div class="overlay " data-overlay></div>
+
+                <section class="testimonials-modal">
+                    <button class="modal-close-btn" data-modal-close-btn><ion-icon name="close-outline"></ion-icon></button>
+
+                    <div class="modal-img-wrapper">
+                        <figure class="modal-avatar-box">
+                            <img src="https://i.postimg.cc/zGDHfn3G/avatar-1.png" alt="Daniel Lewis" width="80" data-modal-img>
+                        </figure>
+
+                        <img src="https://i.postimg.cc/mZ00RwX7/icon-quote.png" alt="quote icon">
+                    </div>
+
+                    <div class="modal-content">
+                        <h4 class="h3 modal-title" data-modal-title>Daniel Lewis</h4>
+                        <time datetime="2023-06-14">14 June, 2023</time>
+
+                        <div class="modal-text" data-modal-text>
+                            <p>Richard was hired to create a corporate identity. It's modern, clean and with a beautiful design that got a lot of praises from colleagues and visitors. We were very pleased with the work done. He has a lot of experience and is very concerned about the needs of client.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section class="clients">
+                <h3 class="h3 clients-title">Patrocinadores</h3>
+
+                <ul class="clients-list has-scrollbar">
+                    <li class="clients-item">
+                        <a href="#"><img src="https://i.postimg.cc/YqfKyG66/logo-1-color.png" alt="logo"></a>
+                    </li>
+
+                    <li class="clients-item">
+                        <a href="#"><img src="https://i.postimg.cc/fWm6JtgG/logo-2-color.png" alt="logo"></a>
+                    </li>
+
+                    <li class="clients-item">
+                        <a href="#"><img src="https://i.postimg.cc/Bb07xpwd/logo-3-color.png" alt="logo"></a>
+                    </li>
+
+                    <li class="clients-item">
+                        <a href="#"><img src="https://i.postimg.cc/hv1yMmkh/logo-4-color.png" alt="logo"></a>
+                    </li>
+
+                    <li class="clients-item">
+                        <a href="#"><img src="https://i.postimg.cc/ry1P86Dc/logo-5-color.png" alt="logo"></a>
+                    </li>
+
+                    <li class="clients-item">
+                        <a href="#"><img src="https://i.postimg.cc/SsWDN8NV/logo-6-color.png" alt="logo"></a>
+                    </li>
+                </ul>
+            </section>
+        </article>
+
+        <article class="resume" data-page="asistente">
+            <header>
+                <h2 class="h2 article-title">Asistente</h2>
+            </header>
+            <section id="sectionChat">
+                <style>
+                    #sectionChat {
+                        font-family: Arial, sans-serif;            
+                        background: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+                        margin: 0;
+                        padding: 0;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100vh;
+                    }
+
+                    .chat {
+                        width: 100%;
+                        height: 100%;
+                        background: #fff;
+                        border-radius: 10px;
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                        display: flex;
+                        flex-direction: column;
+                    }
+                .chat-title {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 15px;
+                border-bottom: 1px solid #eee;
+                }
+                .chat-title h2 {
+                margin: 0;
+                font-size: 20px;
+                }
+                .chat-title .avatar img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                }
+                .messages {
+                flex: 1;
+                overflow-y: auto;
+                padding: 15px;
+                }
+                .messages-content {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                }
+                .message {
+                background: #e0e0e0;
+                padding: 10px;
+                border-radius: 10px;
+                max-width: 70%;
+                align-self: flex-start;
+                }
+                .message.self {
+                background: #d1e7dd;
+                align-self: flex-end;
+                }
+                .action-box {
+                display: flex;
+                border-top: 1px solid #eee;
+                }
+                .action-box-input {
+                flex: 1;            
+                padding: 10px;
+                border: none;
+                outline: none;
+                font-size: 14px;
+                }
+                .action-box-submit {
+                background: none;
+                border: none;
+                padding: 0 15px;
+                font-size: 18px;
+                cursor: pointer;
+                color: #007bff;
+                }
+                </style>
+                <div class="chat">
+                    <div class="chat-title">
+                        <h2>Aquile (Asistente)</h2>
+                        <figure class="avatar">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/764024/profile/profile-512.jpg" alt="Avatar">
+                        </figure>
+                    </div>
+                    <div class="messages">
+                        <div class="messages-content" id="messages-content">
+                            <!-- Messages will appear here -->
+                        </div>
+                    </div>
+                    <div class="action-box">
+                        <textarea style="width:90%;" class="action-box-input" id="message-input" placeholder="Type message..."></textarea>
+                        <button class="action-box-submit" onclick="insertMessage()">
+                            <i class="fa fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <script>
+                    const messagesContent = document.getElementById("messages-content");
+                    const messageInput = document.getElementById("message-input");
+                    let fakeNum = 0;
+                    let isTyping = true;
+                    let uctTimer = null;
+                    var mensajeEnviado;
+                    const fakeMsg = [
+                        "Hola soy Aquile, como te ayudo?",
+                        "Nice to meet you",
+                        "How are you doing?",
+                        "Pretty good",
+                        "How's life been treating you?",
+                        "It could be worse, thanks",
+                        "I've gotta go now",
+                        "It was a pleasure chat with you",
+                        "Bye :)"
+                    ];
+
+                    function userTypingClear() {
+                        clearTimeout(uctTimer);
+                        uctTimer = setTimeout(() => {
+                            const typingMsg = document.querySelector(".message.personal.typing");
+                            if (typingMsg) typingMsg.remove();
+                            isTyping = true;
+                        }, 3500);
+                    }
+
+                    function setDate() {
+                        const timestamp = document.createElement("div");
+                        timestamp.className = "timestamp";
+                        const now = new Date();
+                        const minutes = now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes();
+                        timestamp.textContent = `${now.getHours()}:${minutes}`;
+                        const lastMsg = messagesContent.lastElementChild;
+                        if (lastMsg) lastMsg.appendChild(timestamp);
+                    }
+
+                    function updateScrollbar() {
+                        messagesContent.parentElement.scrollTop = messagesContent.scrollHeight;
+                    }
+
+                    function setFakeMessage() {
+                        const typing = document.createElement("div");
+                        typing.className = "message typing";
+                        const dot = document.createElement("span");
+                        typing.appendChild(dot);
+                        messagesContent.appendChild(typing);
+                        updateScrollbar();
+
+                        setTimeout(() => {
+                            typing.remove();
+                            const msg = document.createElement("div");
+                            msg.className = "message";
+                            if (fakeNum < 1) {
+                                msg.textContent = fakeMsg[fakeNum] || "...";
+                            } else {
+                                $.ajax({
+                                url: '@Url.Action("Asistencia", "Home")',
+                                type: 'POST',
+                                    data: { mensaje: mensajeEnviado},
+                                success: function (response) {
+                                    console.log('Respuesta del servidor:', response);
+                                    msg.textContent = response.profesional
+                                },
+                                    error: function (xhr, status, error) {
+                                        msg.textContent = 'Error al contactar el servidor:', error;
+                                }
+                                });
+                            }
+                            messagesContent.appendChild(msg);
+                            setDate();
+                            updateScrollbar();
+                            fakeNum++;
+                        }, 1000 + Math.random() * 1000);
+                    }
+
+                    function insertMessage() {
+                        const text = messageInput.value.trim();
+                        mensajeEnviado = text;
+                        if (text === "") return;
+
+                        const msg = document.createElement("div");
+                        msg.className = "message personal self";
+                        msg.textContent = text;
+                        messagesContent.appendChild(msg);
+                        setDate();
+                        updateScrollbar();
+                        
+
+                        const typingMsg = document.querySelector(".message.personal.typing");
+                        if (typingMsg) typingMsg.remove();
+                        isTyping = true;
+                        clearTimeout(uctTimer);
+                        if (fakeNum < 1) {
+                            if (fakeMsg[fakeNum]) {
+                                setTimeout(setFakeMessage, 500 + Math.random() * 1000);
+                            }
+                        } else {
+                            setTimeout(setFakeMessage, 500 + Math.random() * 1000);
+                        }
+                        messageInput.value = "";
+                    }
+
+                    window.addEventListener("keydown", function (e) {
+                        if (e.key === "Enter" && !e.shiftKey) {
+                            e.preventDefault();
+                            insertMessage();
+                        }
+                    });
+
+                    messageInput.addEventListener("keydown", function (e) {
+                        if (messageInput.value !== "" && isTyping && e.key !== "Enter") {
+                            const typing = document.createElement("div");
+                            typing.className = "message personal typing";
+                            const dot = document.createElement("span");
+                            typing.appendChild(dot);
+                            messagesContent.appendChild(typing);
+                            updateScrollbar();
+                            isTyping = false;
+                            userTypingClear();
+                        }
+                    });
+
+                    window.addEventListener("load", function () {
+                        updateScrollbar();
+                        setTimeout(setFakeMessage, 100);
+                    });
+                </script>
+            </section>
+        </article>
+
+        <article class="transaccion" data-page="médicos">
+            <header>
+                <h2 class="h2 article-title">Lista Médicos</h2>
+            </header>
+            <div class="container">
+                <a href="#" class="rainbow-button" alt="X" id="quitarfocus"></a>
+                <form id="content">
+                    <input type="text" name="input" class="input" id="search-input" placeholder="">
+                    <button type="reset" class="search" id="search-btn"></button>
+                </form>
+                <section class="container">
+                    <div class="row active-with-click ListaMedicosIndex" style="margin:220px 0px;">
+                        @foreach (var item in (List<HospiPlus.Models.Medico>)ViewBag.Medicos)
+                        {
+                            <div class="col-md-4 col-sm-6 col-xs-12 medicoTarjeta" style="margin-bottom:50px; height:100%;" id="@item.MedicoID">
+                                <div class="material-card @item.Color">
+                                    <h2>
+                                        <span class="nombreMedico">@item.Nombre @item.Apellido</span>
+                                        <strong class="Especialidad">
+                                            <i class="fa fa-fw fa-star"></i>
+                                            @item.Especialida
+                                        </strong>
+                                    </h2>
+                                    <div class="mc-content">
+                                        <div class="img-container" style="font-size:13px;">
+                                            <img src="@Url.Content("~/" + item.ImagenPerfil)"
+                                                 alt="Foto de @item.Nombre @item.Apellido"
+                                                 style="width: 100%; height: 100%; object-fit: cover; object-position: top;" />
+                                        </div>
+                                        <div class="mc-description">
+                                            He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
+                                        </div>
+                                    </div>
+                                    <a class="mc-btn-action">
+                                        <i class="fa fa-bars"></i>
+                                    </a>
+                                    <div class="mc-footer">
+                                        <h4>Social</h4>
+                                        <a class="fa fab fab fa-fw fa-facebook"></a>
+                                        <a class="fa fab fab fa-fw fa-twitter"></a>
+                                        <a class="fa fab fab fa-fw fa-linkedin"></a>
+                                        <a class="fa fab fab fa-fw fa-google-plus"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class='container' id="btnEFCita" style="display:none;">
+                        <svg viewBox="45 60 400 320" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="#fff"
+                                  d="M 90 210 C 90 180 90 150 90 150 C 150 150 180 150 180 150 C 180 150 300 150 300 150 C 300 150 330 150 390 150 C 390 150 390 180 390 210 C 390 240 390 270 390 270 C 330 270 300 270 300 270 C 300 270 180 270 180 270 C 180 270 150 270 90 270 C 90 270 90 240 90 210"
+                                  mask="url(#knockout-text)">
+                            </path>
+                            <mask id="knockout-text">
+                                <rect width="100%" height="100%" fill="#fff" x="0" y="0" />
+                                <text x="147" y="227" fill="#000">Relizar Cita</text>
+                            </mask>
+                        </svg>
+                    </div>
+
+                </section>
+            </div>
+        </article>
+
+        <article class="contact " data-page="about us">
+            <header>
+                <h2 class="h2 article-title">About Us</h2>
+            </header>
+            <section class="mapbox" data-mapbox>
+                <figure>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.732952311931!2d-89.28141158868172!3d13.673995586654428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f632e511f372dd3%3A0x3fe0c1447718b059!2sITCA%20-%20FEPADE!5e0!3m2!1ses-419!2ssv!4v1746073394823!5m2!1ses-419!2ssv"
+                            width="400" height="300" loading="lazy"></iframe>
+                </figure>
+            </section>
+
+            <section class="contact-form">
+                <h3 class="h3 form-title">Contact Form</h3>
+
+                <form action="#" class="form" data-form>
+                    <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input=""></textarea>
+
+                    <button class="form-btn" type="submit" disabled data-form-btn>
+                        <ion-icon name="paper-plane"></ion-icon>
+                        <span>Send Message</span>
+                    </button>
+                </form>
+            </section>
+        </article>
+    </div>
+
+
+</main>
+
+<script>
+    function logout()
+    {
+       window.location.href = '@Url.Action("Login", "Home")';
+    }
+
+    document.getElementById("imagenClickable").addEventListener("click", function () {
+        document.getElementById("imagenPerfilInput").click();
+    });
+
+    $(function () {
+        $('.material-card > .mc-btn-action').click(function (){
+            var card = $(this).parent('.material-card');
+            var icon = $(this).children('i');
+            icon.addClass('fa-spin-fast');
+
+            if (card.hasClass('mc-active')) {
+                card.removeClass('mc-active');
+
+                window.setTimeout(function () {
+                    icon
+                        .removeClass('fa-arrow-left')
+                        .removeClass('fa-spin-fast')
+                        .addClass('fa-bars');
+
+                }, 800);
+            } else {
+                card.addClass('mc-active');
+
+                window.setTimeout(function () {
+                    icon
+                        .removeClass('fa-bars')
+                        .removeClass('fa-spin-fast')
+                        .addClass('fa-arrow-left');
+
+                }, 800);
+            }
+        });
+    });
+
+    const input = document.getElementById("search-input");
+    const searchBtn = document.getElementById("search-btn");
+    const expand = () => {
+        searchBtn.classList.toggle("close");
+        input.placeholder = "Buscar Nombre o Especialidad";
+        input.classList.toggle("square");
+    };
+    searchBtn.addEventListener("click", function () {
+        expand();
+        // Check if the 'close' class is now present on the button
+        if (!searchBtn.classList.contains("close")) {
+            input.placeholder = ""; // If 'close' is present, clear the placeholder
+        } else {
+            // If 'close' is removed, set the placeholder back
+            input.placeholder = "Buscar Nombre o Especialidad";
+        }
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        // Asigna los datos JSON a una variable JavaScript
+        const medicosData = @Html.Raw(medicosJson); // Esto inyecta el JSON serializado
+        var idMedicoSelected;
+ function activeTarjetas() {
+    let tarjetas = document.querySelectorAll(".medicoTarjeta");
+    tarjetas.forEach(tarjeta => {
+        tarjeta.addEventListener("click", function () {
+            // Remove 'active' and add 'Nonactive' from all tarjetas
+            tarjetas.forEach(t => {
+                t.classList.remove("active");
+                t.classList.add("Nonactive");
+            });
+            // Remove 'Nonactive' and add 'active' to the clicked tarjeta
+            this.classList.remove("Nonactive");
+            this.classList.add("active");
+            idMedicoSelected = parseInt(this.id);
+            console.log(idMedicoSelected + typeof idMedicoSelected);
+            var btnFCita = document.getElementById("btnEFCita");
+            btnFCita.style.display = "block";
+        });
+    });
+        }
+
+            var btnFCita = document.getElementById("btnEFCita");
+            btnFCita.addEventListener("click", function () {
+                $.ajax({
+                    url: "@Url.Action("Citas","Home")",
+                    type: "GET",
+                    data: { idMedicoSeleccionado: idMedicoSelected },
+                    cache: false,
+                    success: function (resultado) {
+                window.location.href = "@Url.Action("Citas", "Home")?idMedicoSeleccionado=" + idMedicoSelected;
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error en la petición AJAX:", error);
+                    }
+                });
+            });
+
+            let btnquitar = document.getElementById("quitarfocus");
+            let tarjetas = document.querySelectorAll(".medicoTarjeta");
+            btnquitar.addEventListener("click", function () {
+                    // Remove 'active' and add 'Nonactive' from all tarjetas
+                    tarjetas.forEach(t => {
+                        t.classList.remove("active");
+                        t.classList.remove("Nonactive");
+                        var btnFCita = document.getElementById("btnEFCita");
+                        btnFCita.style.display = "none";
+                    });
+             });
+
+
+        activeTarjetas();
+        $('#search-input').on('keyup', function () {
+            const searchValue = $(this).val().toLowerCase();
+            $('.ListaMedicosIndex').empty();
+
+            // Ahora usas la variable JavaScript 'medicosData'
+            $.each(medicosData, function (i, medico) {
+                const nombre = medico.Nombre ? medico.Nombre.toLowerCase() : '';
+                const apellido = medico.Apellido ? medico.Apellido.toLowerCase() : '';
+                const especialidad = medico.Especialida ? medico.Especialida.toLowerCase() : '';
+
+                if (nombre.includes(searchValue) || apellido.includes(searchValue) || especialidad.includes(searchValue)) {
+                    $('.ListaMedicosIndex').append(`
+                     <div class="col-md-4 col-sm-6 col-xs-12 medicoTarjeta" id="${medico.MedicoID}">
+                            <div class="material-card ${medico.Color}">
+                                <h2>
+                                    <span class="nombreMedico">${medico.Nombre} ${medico.Apellido}</span>
+                                    <strong class="Especialidad">
+                                        <i class="fa fa-fw fa-star"></i>
+                                        ${medico.Especialida}
+                                    </strong>
+                                </h2>
+                                <div class="mc-content">
+                                    <div class="img-container">
+                                        <img class="img-responsive" src="https://material-cards.s3-eu-west-1.amazonaws.com/thumb-christopher-walken.jpg">
+                                    </div>
+                                    <div class="mc-description">
+                                        He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
+                                    </div>
+                                </div>
+                                <a class="mc-btn-action">
+                                    <i class="fa fa-bars"></i>
+                                </a>
+                                <div class="mc-footer">
+                                    <h4>
+                                        Social
+                                    </h4>
+                                    <a class="fa fab fab fa-fw fa-facebook"></a>
+                                    <a class="fa fab fab fa-fw fa-twitter"></a>
+                                    <a class="fa fab fab fa-fw fa-linkedin"></a>
+                                    <a class="fa fab fab fa-fw fa-google-plus"></a>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                   
+                }
+            });
+
+            $(function () {
+                $('.material-card > .mc-btn-action').click(function () {
+                    var card = $(this).parent('.material-card');
+                    var icon = $(this).children('i');
+                    icon.addClass('fa-spin-fast');
+
+                    if (card.hasClass('mc-active')) {
+                        card.removeClass('mc-active');
+
+                        window.setTimeout(function () {
+                            icon
+                                .removeClass('fa-arrow-left')
+                                .removeClass('fa-spin-fast')
+                                .addClass('fa-bars');
+
+                        }, 800);
+                    } else {
+                        card.addClass('mc-active');
+
+                        window.setTimeout(function () {
+                            icon
+                                .removeClass('fa-bars')
+                                .removeClass('fa-spin-fast')
+                                .addClass('fa-arrow-left');
+
+                        }, 800);
+                    }
+                });
+            });
+
+            let btnquitar = document.getElementById("quitarfocus");
+            let tarjetas = document.querySelectorAll(".medicoTarjeta");
+            btnFCita.style.display = "none";
+            btnquitar.addEventListener("click", function () {
+                // Remove 'active' and add 'Nonactive' from all tarjetas
+                tarjetas.forEach(t => {
+                    t.classList.remove("active");
+                    t.classList.remove("Nonactive");
+                });
+            });
+            activeTarjetas();
+        });
+    });
+</script>

@@ -1,0 +1,193 @@
+﻿@model HospiPlus.ViewModels.ValidarCodigoViewModel
+@{
+    ViewBag.Title = "Validar Código";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Validar Código</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        /* Tus estilos sin cambios aquí */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        h1 {
+            margin-bottom: 0;
+            font-size: 2rem;
+            font-weight: 200;
+        }
+
+        form {
+            margin: 3rem 0;
+            border-radius: 0.5rem;
+            background: #ffffff;
+            box-shadow: 28px 28px 56px #d9d9d9, -28px -28px 56px #ffffff;
+            padding: 2rem 3rem;
+        }
+
+        fieldset {
+            border: none;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        input {
+            width: 3rem;
+            height: 3rem;
+            font-size: 2rem;
+            text-align: center;
+            border: none;
+            border-radius: 0.5rem;
+            background: linear-gradient(145deg, #e6e6e6, #ffffff);
+            box-shadow: 28px 28px 56px #d9d9d9, -28px -28px 56px #ffffff;
+        }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            input[type=number] {
+                -moz-appearance: textfield;
+            }
+
+        .btn-submit {
+            margin-top: 2rem;
+            width: 100%;
+            padding: 1rem;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 8px;
+            color: black;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .btn-submit:hover {
+                background-color: black;
+                color: yellow;
+            }
+
+        .text-danger {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Verificación de Código</h1>
+
+    @using (Html.BeginForm("ValidarCodigo", "Login", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Email)
+
+        <fieldset name="number-code" data-number-code-form>
+            <legend class="sr-only">Código de recuperación</legend>
+            @for (int i = 0; i < 6; i++)
+            {
+                <input type="number" min="0" max="9" maxlength="1"
+                       name="codigoIngresado[@i]" data-number-code-input="@i" required />
+            }
+        </fieldset>
+
+        <button type="submit" class="btn-submit">Verificar</button>
+
+        if (!ViewData.ModelState.IsValid)
+        {
+            <div class="text-danger">
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    @error.ErrorMessage <br />
+                }
+            </div>
+        }
+    }
+
+    <p>Tip: Puedes pegar el código completo en el primer campo.</p>
+
+    <script>
+        const numberCodeForm = document.querySelector('[data-number-code-form]');
+        const numberCodeInputs = [...numberCodeForm.querySelectorAll('[data-number-code-input]')];
+
+        const handleInput = ({ target }) => {
+            if (!target.value.length) { target.value = null; return; }
+
+            const inputLength = target.value.length;
+            let currentIndex = Number(target.dataset.numberCodeInput);
+
+            if (inputLength > 1) {
+                const inputValues = target.value.split('');
+
+                inputValues.forEach((value, valueIndex) => {
+                    const nextValueIndex = currentIndex + valueIndex;
+                    if (nextValueIndex >= numberCodeInputs.length) return;
+
+                    numberCodeInputs[nextValueIndex].value = value;
+                });
+
+                currentIndex += inputValues.length - 2;
+            }
+
+            const nextIndex = currentIndex + 1;
+            if (nextIndex < numberCodeInputs.length) {
+                numberCodeInputs[nextIndex].focus();
+            }
+        }
+
+        const handleKeyDown = e => {
+            const { code, target } = e;
+            const currentIndex = Number(target.dataset.numberCodeInput);
+            const previousIndex = currentIndex - 1;
+            const nextIndex = currentIndex + 1;
+            const hasPreviousIndex = previousIndex >= 0;
+            const hasNextIndex = nextIndex < numberCodeInputs.length;
+
+            switch (code) {
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    if (hasPreviousIndex) numberCodeInputs[previousIndex].focus();
+                    e.preventDefault();
+                    break;
+                case 'ArrowRight':
+                case 'ArrowDown':
+                    if (hasNextIndex) numberCodeInputs[nextIndex].focus();
+                    e.preventDefault();
+                    break;
+                case 'Backspace':
+                    if (!target.value.length && hasPreviousIndex) {
+                        numberCodeInputs[previousIndex].value = null;
+                        numberCodeInputs[previousIndex].focus();
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        numberCodeForm.addEventListener('input', handleInput);
+        numberCodeForm.addEventListener('keydown', handleKeyDown);
+    </script>
+
+</body>
+</html>

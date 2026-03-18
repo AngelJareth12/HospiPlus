@@ -1,0 +1,1051 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HospiPlusDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Citas">
+          <Key>
+            <PropertyRef Name="CitaID" />
+          </Key>
+          <Property Name="CitaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PacienteID" Type="int" />
+          <Property Name="MedicoID" Type="int" />
+          <Property Name="FechaHora" Type="datetime" />
+          <Property Name="Motivo" Type="varchar" MaxLength="255" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
+          <Property Name="Consultorio" Type="varchar" MaxLength="50" />
+          <Property Name="NumeroCita" Type="int" />
+          <Property Name="Duracion" Type="int" />
+        </EntityType>
+        <EntityType Name="Consultas">
+          <Key>
+            <PropertyRef Name="ConsultaID" />
+          </Key>
+          <Property Name="ConsultaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CitaID" Type="int" />
+          <Property Name="MedicoID" Type="int" />
+          <Property Name="PacienteID" Type="int" />
+          <Property Name="FechaHora" Type="datetime" />
+          <Property Name="Diagnostico" Type="varchar" MaxLength="255" />
+          <Property Name="Tratamiento" Type="varchar" MaxLength="255" />
+          <Property Name="Notas" Type="varchar" MaxLength="255" />
+          <Property Name="Peso" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Altura" Type="decimal" Precision="5" Scale="2" />
+        </EntityType>
+        <EntityType Name="Examenes">
+          <Key>
+            <PropertyRef Name="ExamenID" />
+          </Key>
+          <Property Name="ExamenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="TipoExamen" Type="varchar" MaxLength="50" />
+          <Property Name="Fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="ExamenesPacientes">
+          <Key>
+            <PropertyRef Name="ExamenPacienteID" />
+          </Key>
+          <Property Name="ExamenPacienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExamenID" Type="int" />
+          <Property Name="PacienteID" Type="int" />
+          <Property Name="ConsultaID" Type="int" />
+          <Property Name="FechaRealizacion" Type="date" />
+          <Property Name="Resultados" Type="varchar" MaxLength="255" />
+          <Property Name="Notas" Type="varchar" MaxLength="255" />
+          <Property Name="MedicoID" Type="int" />
+          <Property Name="Laboratorio" Type="varchar" MaxLength="100" />
+          <Property Name="ArchivoResultados" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Medicamentos">
+          <Key>
+            <PropertyRef Name="MedicamentoID" />
+          </Key>
+          <Property Name="MedicamentoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="Dosis" Type="varchar" MaxLength="50" />
+          <Property Name="Forma" Type="varchar" MaxLength="50" />
+          <Property Name="Marca" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Medicos">
+          <Key>
+            <PropertyRef Name="MedicoID" />
+          </Key>
+          <Property Name="MedicoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Especialidad" Type="varchar" MaxLength="100" />
+          <Property Name="NumeroLicencia" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="ImagenPerfil" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Pacientes">
+          <Key>
+            <PropertyRef Name="PacienteID" />
+          </Key>
+          <Property Name="PacienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="date" />
+          <Property Name="Genero" Type="varchar" MaxLength="10" />
+          <Property Name="Direccion" Type="varchar" MaxLength="255" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="ImagenPerfil" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="PacientesAudit">
+          <Key>
+            <PropertyRef Name="AuditID" />
+          </Key>
+          <Property Name="AuditID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PacienteID" Type="int" />
+          <Property Name="NombreAnterior" Type="varchar" MaxLength="100" />
+          <Property Name="NombreNuevo" Type="varchar" MaxLength="100" />
+          <Property Name="ApellidoAnterior" Type="varchar" MaxLength="100" />
+          <Property Name="ApellidoNuevo" Type="varchar" MaxLength="100" />
+          <Property Name="FechaCambio" Type="datetime" />
+          <Property Name="UsuarioCambio" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Recetas">
+          <Key>
+            <PropertyRef Name="RecetaID" />
+          </Key>
+          <Property Name="RecetaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConsultaID" Type="int" />
+          <Property Name="PacienteID" Type="int" />
+          <Property Name="MedicoID" Type="int" />
+          <Property Name="MedicamentoID" Type="int" />
+          <Property Name="Dosis" Type="varchar" MaxLength="50" />
+          <Property Name="Instrucciones" Type="varchar" MaxLength="255" />
+          <Property Name="FechaEmision" Type="date" />
+          <Property Name="Duracion" Type="int" />
+          <Property Name="Cantidad" Type="int" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioID" />
+          </Key>
+          <Property Name="UsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contrasena" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Rol" Type="varchar" MaxLength="50" />
+          <Property Name="ImagenPerfil" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'HospiPlusDB.sys.database_firewall_rules' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="modify_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Citas_Medicos">
+          <End Role="Medicos" Type="Self.Medicos" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicos">
+              <PropertyRef Name="MedicoID" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="MedicoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Citas_Pacientes">
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="PacienteID" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="PacienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consultas_Citas">
+          <End Role="Citas" Type="Self.Citas" Multiplicity="0..1" />
+          <End Role="Consultas" Type="Self.Consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Citas">
+              <PropertyRef Name="CitaID" />
+            </Principal>
+            <Dependent Role="Consultas">
+              <PropertyRef Name="CitaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consultas_Medicos">
+          <End Role="Medicos" Type="Self.Medicos" Multiplicity="0..1" />
+          <End Role="Consultas" Type="Self.Consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicos">
+              <PropertyRef Name="MedicoID" />
+            </Principal>
+            <Dependent Role="Consultas">
+              <PropertyRef Name="MedicoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consultas_Pacientes">
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="0..1" />
+          <End Role="Consultas" Type="Self.Consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="PacienteID" />
+            </Principal>
+            <Dependent Role="Consultas">
+              <PropertyRef Name="PacienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamenesPacientes_Consultas">
+          <End Role="Consultas" Type="Self.Consultas" Multiplicity="0..1" />
+          <End Role="ExamenesPacientes" Type="Self.ExamenesPacientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consultas">
+              <PropertyRef Name="ConsultaID" />
+            </Principal>
+            <Dependent Role="ExamenesPacientes">
+              <PropertyRef Name="ConsultaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamenesPacientes_Examenes">
+          <End Role="Examenes" Type="Self.Examenes" Multiplicity="0..1" />
+          <End Role="ExamenesPacientes" Type="Self.ExamenesPacientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Examenes">
+              <PropertyRef Name="ExamenID" />
+            </Principal>
+            <Dependent Role="ExamenesPacientes">
+              <PropertyRef Name="ExamenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamenesPacientes_Medicos">
+          <End Role="Medicos" Type="Self.Medicos" Multiplicity="0..1" />
+          <End Role="ExamenesPacientes" Type="Self.ExamenesPacientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicos">
+              <PropertyRef Name="MedicoID" />
+            </Principal>
+            <Dependent Role="ExamenesPacientes">
+              <PropertyRef Name="MedicoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamenesPacientes_Pacientes">
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="0..1" />
+          <End Role="ExamenesPacientes" Type="Self.ExamenesPacientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="PacienteID" />
+            </Principal>
+            <Dependent Role="ExamenesPacientes">
+              <PropertyRef Name="PacienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recetas_Consultas">
+          <End Role="Consultas" Type="Self.Consultas" Multiplicity="0..1" />
+          <End Role="Recetas" Type="Self.Recetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consultas">
+              <PropertyRef Name="ConsultaID" />
+            </Principal>
+            <Dependent Role="Recetas">
+              <PropertyRef Name="ConsultaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recetas_Medicamentos">
+          <End Role="Medicamentos" Type="Self.Medicamentos" Multiplicity="0..1" />
+          <End Role="Recetas" Type="Self.Recetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicamentos">
+              <PropertyRef Name="MedicamentoID" />
+            </Principal>
+            <Dependent Role="Recetas">
+              <PropertyRef Name="MedicamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recetas_Medicos">
+          <End Role="Medicos" Type="Self.Medicos" Multiplicity="0..1" />
+          <End Role="Recetas" Type="Self.Recetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicos">
+              <PropertyRef Name="MedicoID" />
+            </Principal>
+            <Dependent Role="Recetas">
+              <PropertyRef Name="MedicoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recetas_Pacientes">
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="0..1" />
+          <End Role="Recetas" Type="Self.Recetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="PacienteID" />
+            </Principal>
+            <Dependent Role="Recetas">
+              <PropertyRef Name="PacienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="EliminarMedicoCompleto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MedicoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EliminarPacienteCompleto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PacienteID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ObtenerExpedientePaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PacienteID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RegistrarConsultaReceta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PacienteID" Type="int" Mode="In" />
+          <Parameter Name="MedicoID" Type="int" Mode="In" />
+          <Parameter Name="CitaID" Type="int" Mode="In" />
+          <Parameter Name="FechaHora" Type="datetime" Mode="In" />
+          <Parameter Name="Diagnostico" Type="varchar" Mode="In" />
+          <Parameter Name="Tratamiento" Type="varchar" Mode="In" />
+          <Parameter Name="Notas" Type="varchar" Mode="In" />
+          <Parameter Name="Peso" Type="decimal" Mode="In" />
+          <Parameter Name="Altura" Type="decimal" Mode="In" />
+          <Parameter Name="MedicamentoID" Type="int" Mode="In" />
+          <Parameter Name="Dosis" Type="varchar" Mode="In" />
+          <Parameter Name="Instrucciones" Type="varchar" Mode="In" />
+          <Parameter Name="FechaEmision" Type="date" Mode="In" />
+          <Parameter Name="Duracion" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="HospiPlusDBModelStoreContainer">
+          <EntitySet Name="Citas" EntityType="Self.Citas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consultas" EntityType="Self.Consultas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Examenes" EntityType="Self.Examenes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExamenesPacientes" EntityType="Self.ExamenesPacientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medicamentos" EntityType="Self.Medicamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medicos" EntityType="Self.Medicos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacientes" EntityType="Self.Pacientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PacientesAudit" EntityType="Self.PacientesAudit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recetas" EntityType="Self.Recetas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
+            <DefiningQuery>SELECT 
+    [database_firewall_rules].[id] AS [id], 
+    [database_firewall_rules].[name] AS [name], 
+    [database_firewall_rules].[start_ip_address] AS [start_ip_address], 
+    [database_firewall_rules].[end_ip_address] AS [end_ip_address], 
+    [database_firewall_rules].[create_date] AS [create_date], 
+    [database_firewall_rules].[modify_date] AS [modify_date]
+    FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Citas_Medicos" Association="Self.FK_Citas_Medicos">
+            <End Role="Medicos" EntitySet="Medicos" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Citas_Pacientes" Association="Self.FK_Citas_Pacientes">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consultas_Citas" Association="Self.FK_Consultas_Citas">
+            <End Role="Citas" EntitySet="Citas" />
+            <End Role="Consultas" EntitySet="Consultas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consultas_Medicos" Association="Self.FK_Consultas_Medicos">
+            <End Role="Medicos" EntitySet="Medicos" />
+            <End Role="Consultas" EntitySet="Consultas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consultas_Pacientes" Association="Self.FK_Consultas_Pacientes">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="Consultas" EntitySet="Consultas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamenesPacientes_Consultas" Association="Self.FK_ExamenesPacientes_Consultas">
+            <End Role="Consultas" EntitySet="Consultas" />
+            <End Role="ExamenesPacientes" EntitySet="ExamenesPacientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamenesPacientes_Examenes" Association="Self.FK_ExamenesPacientes_Examenes">
+            <End Role="Examenes" EntitySet="Examenes" />
+            <End Role="ExamenesPacientes" EntitySet="ExamenesPacientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamenesPacientes_Medicos" Association="Self.FK_ExamenesPacientes_Medicos">
+            <End Role="Medicos" EntitySet="Medicos" />
+            <End Role="ExamenesPacientes" EntitySet="ExamenesPacientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamenesPacientes_Pacientes" Association="Self.FK_ExamenesPacientes_Pacientes">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="ExamenesPacientes" EntitySet="ExamenesPacientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recetas_Consultas" Association="Self.FK_Recetas_Consultas">
+            <End Role="Consultas" EntitySet="Consultas" />
+            <End Role="Recetas" EntitySet="Recetas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recetas_Medicamentos" Association="Self.FK_Recetas_Medicamentos">
+            <End Role="Medicamentos" EntitySet="Medicamentos" />
+            <End Role="Recetas" EntitySet="Recetas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recetas_Medicos" Association="Self.FK_Recetas_Medicos">
+            <End Role="Medicos" EntitySet="Medicos" />
+            <End Role="Recetas" EntitySet="Recetas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recetas_Pacientes" Association="Self.FK_Recetas_Pacientes">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="Recetas" EntitySet="Recetas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HospiPlusDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Citas">
+          <Key>
+            <PropertyRef Name="CitaID" />
+          </Key>
+          <Property Name="CitaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PacienteID" Type="Int32" />
+          <Property Name="MedicoID" Type="Int32" />
+          <Property Name="FechaHora" Type="DateTime" Precision="3" />
+          <Property Name="Motivo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Consultorio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroCita" Type="Int32" />
+          <Property Name="Duracion" Type="Int32" />
+          <NavigationProperty Name="Medicos" Relationship="Self.FK_Citas_Medicos" FromRole="Citas" ToRole="Medicos" />
+          <NavigationProperty Name="Pacientes" Relationship="Self.FK_Citas_Pacientes" FromRole="Citas" ToRole="Pacientes" />
+          <NavigationProperty Name="Consultas" Relationship="Self.FK_Consultas_Citas" FromRole="Citas" ToRole="Consultas" />
+        </EntityType>
+        <EntityType Name="Consultas">
+          <Key>
+            <PropertyRef Name="ConsultaID" />
+          </Key>
+          <Property Name="ConsultaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CitaID" Type="Int32" />
+          <Property Name="MedicoID" Type="Int32" />
+          <Property Name="PacienteID" Type="Int32" />
+          <Property Name="FechaHora" Type="DateTime" Precision="3" />
+          <Property Name="Diagnostico" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Tratamiento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Notas" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Peso" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Altura" Type="Decimal" Precision="5" Scale="2" />
+          <NavigationProperty Name="Citas" Relationship="Self.FK_Consultas_Citas" FromRole="Consultas" ToRole="Citas" />
+          <NavigationProperty Name="Medicos" Relationship="Self.FK_Consultas_Medicos" FromRole="Consultas" ToRole="Medicos" />
+          <NavigationProperty Name="Pacientes" Relationship="Self.FK_Consultas_Pacientes" FromRole="Consultas" ToRole="Pacientes" />
+          <NavigationProperty Name="ExamenesPacientes" Relationship="Self.FK_ExamenesPacientes_Consultas" FromRole="Consultas" ToRole="ExamenesPacientes" />
+          <NavigationProperty Name="Recetas" Relationship="Self.FK_Recetas_Consultas" FromRole="Consultas" ToRole="Recetas" />
+        </EntityType>
+        <EntityType Name="Examenes">
+          <Key>
+            <PropertyRef Name="ExamenID" />
+          </Key>
+          <Property Name="ExamenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TipoExamen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ExamenesPacientes" Relationship="Self.FK_ExamenesPacientes_Examenes" FromRole="Examenes" ToRole="ExamenesPacientes" />
+        </EntityType>
+        <EntityType Name="ExamenesPacientes">
+          <Key>
+            <PropertyRef Name="ExamenPacienteID" />
+          </Key>
+          <Property Name="ExamenPacienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExamenID" Type="Int32" />
+          <Property Name="PacienteID" Type="Int32" />
+          <Property Name="ConsultaID" Type="Int32" />
+          <Property Name="FechaRealizacion" Type="DateTime" Precision="0" />
+          <Property Name="Resultados" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Notas" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MedicoID" Type="Int32" />
+          <Property Name="Laboratorio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ArchivoResultados" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Consultas" Relationship="Self.FK_ExamenesPacientes_Consultas" FromRole="ExamenesPacientes" ToRole="Consultas" />
+          <NavigationProperty Name="Examenes" Relationship="Self.FK_ExamenesPacientes_Examenes" FromRole="ExamenesPacientes" ToRole="Examenes" />
+          <NavigationProperty Name="Medicos" Relationship="Self.FK_ExamenesPacientes_Medicos" FromRole="ExamenesPacientes" ToRole="Medicos" />
+          <NavigationProperty Name="Pacientes" Relationship="Self.FK_ExamenesPacientes_Pacientes" FromRole="ExamenesPacientes" ToRole="Pacientes" />
+        </EntityType>
+        <EntityType Name="Medicamentos">
+          <Key>
+            <PropertyRef Name="MedicamentoID" />
+          </Key>
+          <Property Name="MedicamentoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Dosis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Forma" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Recetas" Relationship="Self.FK_Recetas_Medicamentos" FromRole="Medicamentos" ToRole="Recetas" />
+        </EntityType>
+        <EntityType Name="Medicos">
+          <Key>
+            <PropertyRef Name="MedicoID" />
+          </Key>
+          <Property Name="MedicoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Especialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroLicencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ImagenPerfil" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Citas" Relationship="Self.FK_Citas_Medicos" FromRole="Medicos" ToRole="Citas" />
+          <NavigationProperty Name="Consultas" Relationship="Self.FK_Consultas_Medicos" FromRole="Medicos" ToRole="Consultas" />
+          <NavigationProperty Name="ExamenesPacientes" Relationship="Self.FK_ExamenesPacientes_Medicos" FromRole="Medicos" ToRole="ExamenesPacientes" />
+          <NavigationProperty Name="Recetas" Relationship="Self.FK_Recetas_Medicos" FromRole="Medicos" ToRole="Recetas" />
+        </EntityType>
+        <EntityType Name="Pacientes">
+          <Key>
+            <PropertyRef Name="PacienteID" />
+          </Key>
+          <Property Name="PacienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Genero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ImagenPerfil" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Citas" Relationship="Self.FK_Citas_Pacientes" FromRole="Pacientes" ToRole="Citas" />
+          <NavigationProperty Name="Consultas" Relationship="Self.FK_Consultas_Pacientes" FromRole="Pacientes" ToRole="Consultas" />
+          <NavigationProperty Name="ExamenesPacientes" Relationship="Self.FK_ExamenesPacientes_Pacientes" FromRole="Pacientes" ToRole="ExamenesPacientes" />
+          <NavigationProperty Name="Recetas" Relationship="Self.FK_Recetas_Pacientes" FromRole="Pacientes" ToRole="Recetas" />
+        </EntityType>
+        <EntityType Name="PacientesAudit">
+          <Key>
+            <PropertyRef Name="AuditID" />
+          </Key>
+          <Property Name="AuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PacienteID" Type="Int32" />
+          <Property Name="NombreAnterior" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NombreNuevo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoAnterior" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoNuevo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCambio" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioCambio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Recetas">
+          <Key>
+            <PropertyRef Name="RecetaID" />
+          </Key>
+          <Property Name="RecetaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConsultaID" Type="Int32" />
+          <Property Name="PacienteID" Type="Int32" />
+          <Property Name="MedicoID" Type="Int32" />
+          <Property Name="MedicamentoID" Type="Int32" />
+          <Property Name="Dosis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Instrucciones" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FechaEmision" Type="DateTime" Precision="0" />
+          <Property Name="Duracion" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" />
+          <NavigationProperty Name="Consultas" Relationship="Self.FK_Recetas_Consultas" FromRole="Recetas" ToRole="Consultas" />
+          <NavigationProperty Name="Medicamentos" Relationship="Self.FK_Recetas_Medicamentos" FromRole="Recetas" ToRole="Medicamentos" />
+          <NavigationProperty Name="Medicos" Relationship="Self.FK_Recetas_Medicos" FromRole="Recetas" ToRole="Medicos" />
+          <NavigationProperty Name="Pacientes" Relationship="Self.FK_Recetas_Pacientes" FromRole="Recetas" ToRole="Pacientes" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioID" />
+          </Key>
+          <Property Name="UsuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Rol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImagenPerfil" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_Citas_Medicos">
+          <End Role="Medicos" Type="Self.Medicos" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicos">
+              <PropertyRef Name="MedicoID" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="MedicoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Citas_Pacientes">
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="PacienteID" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="PacienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consultas_Citas">
+          <End Role="Citas" Type="Self.Citas" Multiplicity="0..1" />
+          <End Role="Consultas" Type="Self.Consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Citas">
+              <PropertyRef Name="CitaID" />
+            </Principal>
+            <Dependent Role="Consultas">
+              <PropertyRef Name="CitaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consultas_Medicos">
+          <End Role="Medicos" Type="Self.Medicos" Multiplicity="0..1" />
+          <End Role="Consultas" Type="Self.Consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicos">
+              <PropertyRef Name="MedicoID" />
+            </Principal>
+            <Dependent Role="Consultas">
+              <PropertyRef Name="MedicoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consultas_Pacientes">
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="0..1" />
+          <End Role="Consultas" Type="Self.Consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="PacienteID" />
+            </Principal>
+            <Dependent Role="Consultas">
+              <PropertyRef Name="PacienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamenesPacientes_Consultas">
+          <End Role="Consultas" Type="Self.Consultas" Multiplicity="0..1" />
+          <End Role="ExamenesPacientes" Type="Self.ExamenesPacientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consultas">
+              <PropertyRef Name="ConsultaID" />
+            </Principal>
+            <Dependent Role="ExamenesPacientes">
+              <PropertyRef Name="ConsultaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recetas_Consultas">
+          <End Role="Consultas" Type="Self.Consultas" Multiplicity="0..1" />
+          <End Role="Recetas" Type="Self.Recetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consultas">
+              <PropertyRef Name="ConsultaID" />
+            </Principal>
+            <Dependent Role="Recetas">
+              <PropertyRef Name="ConsultaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamenesPacientes_Examenes">
+          <End Role="Examenes" Type="Self.Examenes" Multiplicity="0..1" />
+          <End Role="ExamenesPacientes" Type="Self.ExamenesPacientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Examenes">
+              <PropertyRef Name="ExamenID" />
+            </Principal>
+            <Dependent Role="ExamenesPacientes">
+              <PropertyRef Name="ExamenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamenesPacientes_Medicos">
+          <End Role="Medicos" Type="Self.Medicos" Multiplicity="0..1" />
+          <End Role="ExamenesPacientes" Type="Self.ExamenesPacientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicos">
+              <PropertyRef Name="MedicoID" />
+            </Principal>
+            <Dependent Role="ExamenesPacientes">
+              <PropertyRef Name="MedicoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamenesPacientes_Pacientes">
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="0..1" />
+          <End Role="ExamenesPacientes" Type="Self.ExamenesPacientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="PacienteID" />
+            </Principal>
+            <Dependent Role="ExamenesPacientes">
+              <PropertyRef Name="PacienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recetas_Medicamentos">
+          <End Role="Medicamentos" Type="Self.Medicamentos" Multiplicity="0..1" />
+          <End Role="Recetas" Type="Self.Recetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicamentos">
+              <PropertyRef Name="MedicamentoID" />
+            </Principal>
+            <Dependent Role="Recetas">
+              <PropertyRef Name="MedicamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recetas_Medicos">
+          <End Role="Medicos" Type="Self.Medicos" Multiplicity="0..1" />
+          <End Role="Recetas" Type="Self.Recetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicos">
+              <PropertyRef Name="MedicoID" />
+            </Principal>
+            <Dependent Role="Recetas">
+              <PropertyRef Name="MedicoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recetas_Pacientes">
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="0..1" />
+          <End Role="Recetas" Type="Self.Recetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="PacienteID" />
+            </Principal>
+            <Dependent Role="Recetas">
+              <PropertyRef Name="PacienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HospiPlusDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Citas" EntityType="Self.Citas" />
+          <EntitySet Name="Consultas" EntityType="Self.Consultas" />
+          <EntitySet Name="Examenes" EntityType="Self.Examenes" />
+          <EntitySet Name="ExamenesPacientes" EntityType="Self.ExamenesPacientes" />
+          <EntitySet Name="Medicamentos" EntityType="Self.Medicamentos" />
+          <EntitySet Name="Medicos" EntityType="Self.Medicos" />
+          <EntitySet Name="Pacientes" EntityType="Self.Pacientes" />
+          <EntitySet Name="PacientesAudit" EntityType="Self.PacientesAudit" />
+          <EntitySet Name="Recetas" EntityType="Self.Recetas" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+          <AssociationSet Name="FK_Citas_Medicos" Association="Self.FK_Citas_Medicos">
+            <End Role="Medicos" EntitySet="Medicos" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Citas_Pacientes" Association="Self.FK_Citas_Pacientes">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consultas_Citas" Association="Self.FK_Consultas_Citas">
+            <End Role="Citas" EntitySet="Citas" />
+            <End Role="Consultas" EntitySet="Consultas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consultas_Medicos" Association="Self.FK_Consultas_Medicos">
+            <End Role="Medicos" EntitySet="Medicos" />
+            <End Role="Consultas" EntitySet="Consultas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consultas_Pacientes" Association="Self.FK_Consultas_Pacientes">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="Consultas" EntitySet="Consultas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamenesPacientes_Consultas" Association="Self.FK_ExamenesPacientes_Consultas">
+            <End Role="Consultas" EntitySet="Consultas" />
+            <End Role="ExamenesPacientes" EntitySet="ExamenesPacientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recetas_Consultas" Association="Self.FK_Recetas_Consultas">
+            <End Role="Consultas" EntitySet="Consultas" />
+            <End Role="Recetas" EntitySet="Recetas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamenesPacientes_Examenes" Association="Self.FK_ExamenesPacientes_Examenes">
+            <End Role="Examenes" EntitySet="Examenes" />
+            <End Role="ExamenesPacientes" EntitySet="ExamenesPacientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamenesPacientes_Medicos" Association="Self.FK_ExamenesPacientes_Medicos">
+            <End Role="Medicos" EntitySet="Medicos" />
+            <End Role="ExamenesPacientes" EntitySet="ExamenesPacientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamenesPacientes_Pacientes" Association="Self.FK_ExamenesPacientes_Pacientes">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="ExamenesPacientes" EntitySet="ExamenesPacientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recetas_Medicamentos" Association="Self.FK_Recetas_Medicamentos">
+            <End Role="Medicamentos" EntitySet="Medicamentos" />
+            <End Role="Recetas" EntitySet="Recetas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recetas_Medicos" Association="Self.FK_Recetas_Medicos">
+            <End Role="Medicos" EntitySet="Medicos" />
+            <End Role="Recetas" EntitySet="Recetas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recetas_Pacientes" Association="Self.FK_Recetas_Pacientes">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="Recetas" EntitySet="Recetas" />
+          </AssociationSet>
+          <FunctionImport Name="EliminarMedicoCompleto">
+            <Parameter Name="MedicoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarPacienteCompleto">
+            <Parameter Name="PacienteID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ObtenerExpedientePaciente" ReturnType="Collection(HospiPlusDBModel.ObtenerExpedientePaciente_Result)">
+            <Parameter Name="PacienteID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RegistrarConsultaReceta">
+            <Parameter Name="PacienteID" Mode="In" Type="Int32" />
+            <Parameter Name="MedicoID" Mode="In" Type="Int32" />
+            <Parameter Name="CitaID" Mode="In" Type="Int32" />
+            <Parameter Name="FechaHora" Mode="In" Type="DateTime" />
+            <Parameter Name="Diagnostico" Mode="In" Type="String" />
+            <Parameter Name="Tratamiento" Mode="In" Type="String" />
+            <Parameter Name="Notas" Mode="In" Type="String" />
+            <Parameter Name="Peso" Mode="In" Type="Decimal" />
+            <Parameter Name="Altura" Mode="In" Type="Decimal" />
+            <Parameter Name="MedicamentoID" Mode="In" Type="Int32" />
+            <Parameter Name="Dosis" Mode="In" Type="String" />
+            <Parameter Name="Instrucciones" Mode="In" Type="String" />
+            <Parameter Name="FechaEmision" Mode="In" Type="DateTime" />
+            <Parameter Name="Duracion" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ObtenerExpedientePaciente_Result">
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" />
+          <Property Type="DateTime" Name="FechaConsulta" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Diagnostico" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Tratamiento" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="FechaReceta" Nullable="true" />
+          <Property Type="String" Name="NombreMedicamento" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NombreExamen" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="FechaExamen" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HospiPlusDBModelStoreContainer" CdmEntityContainer="HospiPlusDBEntities1">
+          <EntitySetMapping Name="Citas">
+            <EntityTypeMapping TypeName="HospiPlusDBModel.Citas">
+              <MappingFragment StoreEntitySet="Citas">
+                <ScalarProperty Name="CitaID" ColumnName="CitaID" />
+                <ScalarProperty Name="PacienteID" ColumnName="PacienteID" />
+                <ScalarProperty Name="MedicoID" ColumnName="MedicoID" />
+                <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Consultorio" ColumnName="Consultorio" />
+                <ScalarProperty Name="NumeroCita" ColumnName="NumeroCita" />
+                <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consultas">
+            <EntityTypeMapping TypeName="HospiPlusDBModel.Consultas">
+              <MappingFragment StoreEntitySet="Consultas">
+                <ScalarProperty Name="ConsultaID" ColumnName="ConsultaID" />
+                <ScalarProperty Name="CitaID" ColumnName="CitaID" />
+                <ScalarProperty Name="MedicoID" ColumnName="MedicoID" />
+                <ScalarProperty Name="PacienteID" ColumnName="PacienteID" />
+                <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+                <ScalarProperty Name="Diagnostico" ColumnName="Diagnostico" />
+                <ScalarProperty Name="Tratamiento" ColumnName="Tratamiento" />
+                <ScalarProperty Name="Notas" ColumnName="Notas" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Altura" ColumnName="Altura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Examenes">
+            <EntityTypeMapping TypeName="HospiPlusDBModel.Examenes">
+              <MappingFragment StoreEntitySet="Examenes">
+                <ScalarProperty Name="ExamenID" ColumnName="ExamenID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="TipoExamen" ColumnName="TipoExamen" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExamenesPacientes">
+            <EntityTypeMapping TypeName="HospiPlusDBModel.ExamenesPacientes">
+              <MappingFragment StoreEntitySet="ExamenesPacientes">
+                <ScalarProperty Name="ExamenPacienteID" ColumnName="ExamenPacienteID" />
+                <ScalarProperty Name="ExamenID" ColumnName="ExamenID" />
+                <ScalarProperty Name="PacienteID" ColumnName="PacienteID" />
+                <ScalarProperty Name="ConsultaID" ColumnName="ConsultaID" />
+                <ScalarProperty Name="FechaRealizacion" ColumnName="FechaRealizacion" />
+                <ScalarProperty Name="Resultados" ColumnName="Resultados" />
+                <ScalarProperty Name="Notas" ColumnName="Notas" />
+                <ScalarProperty Name="MedicoID" ColumnName="MedicoID" />
+                <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
+                <ScalarProperty Name="ArchivoResultados" ColumnName="ArchivoResultados" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicamentos">
+            <EntityTypeMapping TypeName="HospiPlusDBModel.Medicamentos">
+              <MappingFragment StoreEntitySet="Medicamentos">
+                <ScalarProperty Name="MedicamentoID" ColumnName="MedicamentoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Dosis" ColumnName="Dosis" />
+                <ScalarProperty Name="Forma" ColumnName="Forma" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicos">
+            <EntityTypeMapping TypeName="HospiPlusDBModel.Medicos">
+              <MappingFragment StoreEntitySet="Medicos">
+                <ScalarProperty Name="MedicoID" ColumnName="MedicoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+                <ScalarProperty Name="NumeroLicencia" ColumnName="NumeroLicencia" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ImagenPerfil" ColumnName="ImagenPerfil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacientes">
+            <EntityTypeMapping TypeName="HospiPlusDBModel.Pacientes">
+              <MappingFragment StoreEntitySet="Pacientes">
+                <ScalarProperty Name="PacienteID" ColumnName="PacienteID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ImagenPerfil" ColumnName="ImagenPerfil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PacientesAudit">
+            <EntityTypeMapping TypeName="HospiPlusDBModel.PacientesAudit">
+              <MappingFragment StoreEntitySet="PacientesAudit">
+                <ScalarProperty Name="AuditID" ColumnName="AuditID" />
+                <ScalarProperty Name="PacienteID" ColumnName="PacienteID" />
+                <ScalarProperty Name="NombreAnterior" ColumnName="NombreAnterior" />
+                <ScalarProperty Name="NombreNuevo" ColumnName="NombreNuevo" />
+                <ScalarProperty Name="ApellidoAnterior" ColumnName="ApellidoAnterior" />
+                <ScalarProperty Name="ApellidoNuevo" ColumnName="ApellidoNuevo" />
+                <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+                <ScalarProperty Name="UsuarioCambio" ColumnName="UsuarioCambio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recetas">
+            <EntityTypeMapping TypeName="HospiPlusDBModel.Recetas">
+              <MappingFragment StoreEntitySet="Recetas">
+                <ScalarProperty Name="RecetaID" ColumnName="RecetaID" />
+                <ScalarProperty Name="ConsultaID" ColumnName="ConsultaID" />
+                <ScalarProperty Name="PacienteID" ColumnName="PacienteID" />
+                <ScalarProperty Name="MedicoID" ColumnName="MedicoID" />
+                <ScalarProperty Name="MedicamentoID" ColumnName="MedicamentoID" />
+                <ScalarProperty Name="Dosis" ColumnName="Dosis" />
+                <ScalarProperty Name="Instrucciones" ColumnName="Instrucciones" />
+                <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+                <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="HospiPlusDBModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="ImagenPerfil" ColumnName="ImagenPerfil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="database_firewall_rules">
+            <EntityTypeMapping TypeName="HospiPlusDBModel.database_firewall_rules">
+              <MappingFragment StoreEntitySet="database_firewall_rules">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+                <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="EliminarMedicoCompleto" FunctionName="HospiPlusDBModel.Store.EliminarMedicoCompleto" />
+          <FunctionImportMapping FunctionImportName="EliminarPacienteCompleto" FunctionName="HospiPlusDBModel.Store.EliminarPacienteCompleto" />
+          <FunctionImportMapping FunctionImportName="ObtenerExpedientePaciente" FunctionName="HospiPlusDBModel.Store.ObtenerExpedientePaciente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HospiPlusDBModel.ObtenerExpedientePaciente_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="FechaConsulta" ColumnName="FechaConsulta" />
+                <ScalarProperty Name="Diagnostico" ColumnName="Diagnostico" />
+                <ScalarProperty Name="Tratamiento" ColumnName="Tratamiento" />
+                <ScalarProperty Name="FechaReceta" ColumnName="FechaReceta" />
+                <ScalarProperty Name="NombreMedicamento" ColumnName="NombreMedicamento" />
+                <ScalarProperty Name="NombreExamen" ColumnName="NombreExamen" />
+                <ScalarProperty Name="FechaExamen" ColumnName="FechaExamen" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RegistrarConsultaReceta" FunctionName="HospiPlusDBModel.Store.RegistrarConsultaReceta" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
